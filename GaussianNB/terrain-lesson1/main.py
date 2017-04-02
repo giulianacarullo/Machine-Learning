@@ -11,6 +11,8 @@
 from prep_terrain_data import makeTerrainData
 from class_vis import prettyPicture, output_image
 from classifyNB import classify
+from classifyNB import NBAccuracy
+
 
 import numpy as np
 import pylab as pl
@@ -31,6 +33,9 @@ bumpy_slow = [features_train[ii][1] for ii in range(0, len(features_train)) if l
 # Be sure to change to that code tab to complete this quiz.
 clf = classify(features_train, labels_train)
 
+# Determining accuracy
+accuracy = NBAccuracy(features_train, labels_train, features_test, labels_test, clf)
+print "Accuracy: %.2f %%" % (accuracy * 100)
 
 ### draw the decision boundary with the text points overlaid
 prettyPicture(clf, features_test, labels_test)
